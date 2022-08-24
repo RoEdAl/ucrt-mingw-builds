@@ -16,7 +16,7 @@ readonly GCC_PREFIX_MAP="-ffile-prefix-map=${UCRT_BUILDROOT_WIN}=./${UCRT_BUILDR
 
 ${MINGW_BUILDS}/build \
 	--arch=x86_64 \
-	--march-x64=x86-64-v2 \
+	--march-x64=x86-64 \
 	--mtune-x64=generic \
 	--mode=gcc-${UCRT_GCC_VER} \
 	--with-default-msvcrt=ucrt \
