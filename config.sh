@@ -2,7 +2,7 @@
 # ucrt-mingw-build : configuration
 #
 
-readonly UCRT_GCC_VER=12.1.0
+readonly UCRT_GCC_VER=12.2.0
 readonly UCRT_RT_REV=v10
 
 readonly UCRT_WORKDIR=/home/builder
