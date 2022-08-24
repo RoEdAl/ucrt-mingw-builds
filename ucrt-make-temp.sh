@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 #
 # 1st step
@@ -9,8 +9,10 @@ readonly TOP_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source ${TOP_DIR}/scripts/config.sh
 
 readonly GCC_PREFIX_MAP="-ffile-prefix-map=${TMP_BUILDROOT_WIN}=./${TMP_BUILDROOT_NAME}"
+source ${TOP_DIR}/scripts/git.sh
 
-${MINGW_BUILDS}/build \
+env SOURCE_DATE_EPOCH=${BUILD_STAMP} \
+	${MINGW_BUILDS}/build \
 	--arch=x86_64 \
 	--march-x64=native \
 	--mtune-x64=native \

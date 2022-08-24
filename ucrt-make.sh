@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 #
 # 2nd step
@@ -13,8 +13,10 @@ TMP_TOOLCHAIN=${TMP_BUILDROOT}/${TMP_TOOLCHAIN_DIR_NAME}
 TMP_TOOLCHAIN_WIN=$(cygpath -m ${TMP_TOOLCHAIN})
 
 readonly GCC_PREFIX_MAP="-ffile-prefix-map=${UCRT_BUILDROOT_WIN}=./${UCRT_BUILDROOT_NAME} -ffile-prefix-map=${TMP_TOOLCHAIN_WIN}=./${TMP_BUILDROOT_NAME}"
+source ${TOP_DIR}/scripts/git.sh
 
-${MINGW_BUILDS}/build \
+env SOURCE_DATE_EPOCH=${BUILD_STAMP} \
+	${MINGW_BUILDS}/build \
 	--arch=x86_64 \
 	--march-x64=x86-64 \
 	--mtune-x64=generic \
