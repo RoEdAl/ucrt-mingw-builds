@@ -14,6 +14,8 @@ source ${TOP_DIR}/scripts/git.sh
 env SOURCE_DATE_EPOCH=${BUILD_STAMP} \
 	${MINGW_BUILDS}/build \
 	--arch=x86_64 \
+	--march-x64=x86-64 \
+	--mtune-x64=westmere \
 	--mode=gcc-${UCRT_GCC_VER} \
 	--with-default-msvcrt=ucrt \
 	--exceptions=seh \
