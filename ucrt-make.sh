@@ -31,5 +31,13 @@ env SOURCE_DATE_EPOCH=${BUILD_STAMP} \
 	--buildroot=${UCRT_BUILDROOT} \
 	--cflags="${GCC_PREFIX_MAP}" \
 	--cxxflags="${GCC_PREFIX_MAP}" \
-	--bin-compress \
 	--jobs=${NUMBER_OF_PROCESSORS:-4}
+
+TOOLCHAIN_DIR_NAME=$(find ${UCRT_BUILDROOT} -maxdepth 1 -type d -name 'x86_64-*' -printf '%f\n')
+TOOLCHAIN_DIR=${UCRT_BUILDROOT}/${TOOLCHAIN_DIR_NAME}
+env SOURCE_DATE_EPOCH=${BUILD_STAMP} \
+	cmake -E chdir ${TOOLCHAIN_DIR} cmake -E tar c \
+	${UCRT_BUILDROOT}/archives/${TOOLCHAIN_DIR_NAME}.7z \
+	--format=7zip \
+	-- \
+	mingw64

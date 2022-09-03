@@ -11,7 +11,7 @@ source ${TOP_DIR}/scripts/config.sh
 mkdir -p ${UCRT_WORKDIR} ||
 	exit 1
 
-pacman -Sy --noconfirm --needed git ||
+pacman -Sy --noconfirm --needed git cmake ||
 	exit 1
 
 if [ ! -d ${MINGW_BUILDS} ]; then
