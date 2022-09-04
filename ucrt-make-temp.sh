@@ -25,6 +25,7 @@ env SOURCE_DATE_EPOCH=${BUILD_STAMP} \
 	--dyn-deps \
 	--no-gcc-lto \
 	--no-bootstrap \
+	--no-extras \
 	--enable-languages=c,c++ \
 	--buildroot=${TMP_BUILDROOT} \
 	--cflags=${GCC_PREFIX_MAP} \
