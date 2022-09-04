@@ -35,9 +35,10 @@ env SOURCE_DATE_EPOCH=${BUILD_STAMP} \
 
 TOOLCHAIN_DIR_NAME=$(find ${UCRT_BUILDROOT} -maxdepth 1 -type d -name 'x86_64-*' -printf '%f\n')
 TOOLCHAIN_DIR=${UCRT_BUILDROOT}/${TOOLCHAIN_DIR_NAME}
-env SOURCE_DATE_EPOCH=${BUILD_STAMP} \
-	cmake -E chdir ${TOOLCHAIN_DIR} cmake -E tar c \
-	${UCRT_BUILDROOT}/archives/${TOOLCHAIN_DIR_NAME}.7z \
-	--format=7zip \
-	-- \
+find ${TOOLCHAIN_DIR}/mingw64 -exec touch -m -d "@${BUILD_STAMP}" {} +
+(cd ${TOOLCHAIN_DIR} && bsdtar \
+	-acf ${UCRT_BUILDROOT}/archives/${TOOLCHAIN_DIR_NAME}.7z \
+	--options 'compression=lzma2,compression-level=9' \
 	mingw64
+)
+touch -m -d "@${BUILD_STAMP}" ${UCRT_BUILDROOT}/archives/${TOOLCHAIN_DIR_NAME}.7z
