@@ -29,6 +29,7 @@ env SOURCE_DATE_EPOCH=${BUILD_STAMP} \
 	--enable-languages=c,c++,fortran \
 	--provided-toolchain=${TMP_TOOLCHAIN} \
 	--buildroot=${UCRT_BUILDROOT} \
+	--no-extras \
 	--cflags="${GCC_PREFIX_MAP}" \
 	--cxxflags="${GCC_PREFIX_MAP}" \
 	--jobs=${NUMBER_OF_PROCESSORS:-4}
