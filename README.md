@@ -2,7 +2,7 @@
 
 **UCRT** based *MinGW* builds. 
 
-Process of building `ucrt` binaries is performed by [mingw-builds](https://github.com/niXman/mingw-builds) scripts.
+Process of building `ucrt` binaries is performed by [mingw-builds](https://github.com/RoEdAl/mingw-builds) scripts.
 It is described briefly [here](https://github.com/niXman/mingw-builds/issues/580).
 
 ## Scripts

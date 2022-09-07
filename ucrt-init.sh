@@ -15,6 +15,6 @@ pacman -Sy --noconfirm --needed git bsdtar ||
 	exit 1
 
 if [ ! -d ${MINGW_BUILDS} ]; then
-	git clone --quiet https://github.com/niXman/mingw-builds --depth=1 ${MINGW_BUILDS} ||
+	git clone --quiet --branch windres https://github.com/RoEdAl/mingw-builds --depth=1 ${MINGW_BUILDS} ||
 		exit 1
 fi
